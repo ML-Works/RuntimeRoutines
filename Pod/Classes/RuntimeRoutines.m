@@ -222,7 +222,7 @@ NSString *RRMethodGetReturnType(Method method) {
 }
 
 NSUInteger RRMethodGetArgumentsCount(Method method) {
-    return method_getNumberOfArguments(method);
+    return method_getNumberOfArguments(method) - 2;
 }
 
 NSString *RRMethodGetArgumentType(Method method, NSUInteger index) {
