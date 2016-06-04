@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 
-target 'RuntimeRoutines_Tests', :exclusive => true do
+target 'RuntimeRoutines_Tests' do
   pod 'RuntimeRoutines', :path => '../'
 
   

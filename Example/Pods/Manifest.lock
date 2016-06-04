@@ -1,5 +1,5 @@
 PODS:
-  - RuntimeRoutines (0.1.0)
+  - RuntimeRoutines (0.1.2)
 
 DEPENDENCIES:
   - RuntimeRoutines (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  RuntimeRoutines: 2fd1b2bb601a2169b65ca0151d77a0272ae6f5cf
+  RuntimeRoutines: ce35664da43660c8c21156feeb0637953c405183
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: eae728bbb11b2d5491ce062cd8753752c0203527
+
+COCOAPODS: 1.0.1

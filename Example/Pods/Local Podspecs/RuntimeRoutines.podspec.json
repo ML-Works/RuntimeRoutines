@@ -1,25 +1,21 @@
 {
   "name": "RuntimeRoutines",
-  "version": "0.1.0",
-  "summary": "A short description of RuntimeRoutines.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/RuntimeRoutines",
+  "version": "0.1.2",
+  "summary": "A block-based way to access Objective-C runtime primitives",
+  "description": "RuntimeRoutines allows you to access classes, protocols,\nproperties, methods, attrbutes and many other with block-based syntax.",
+  "homepage": "https://github.com/ML-Works/RuntimeRoutines",
   "license": "MIT",
   "authors": {
-    "Anton Bukov": "k06aaa@gmail.com"
+    "Anton Bukov": "k06a@mlworks.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/RuntimeRoutines.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/ML-Works/RuntimeRoutines.git",
+    "tag": "0.1.2"
   },
+  "social_media_url": "https://twitter.com/k06a",
   "platforms": {
-    "ios": "7.0"
+    "ios": "7.0",
+    "watchos": "1.0"
   },
-  "requires_arc": true,
-  "source_files": "Pod/Classes/**/*",
-  "resource_bundles": {
-    "RuntimeRoutines": [
-      "Pod/Assets/*.png"
-    ]
-  }
+  "source_files": "Pod/Classes/**/*"
 }
