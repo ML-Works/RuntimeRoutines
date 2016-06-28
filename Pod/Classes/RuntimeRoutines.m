@@ -57,6 +57,22 @@ void RRClassEnumerateProperties(Class klass, void (^block)(objc_property_t prope
     free(properties);
 }
 
+void RRClassEnumeratePropertiesWithSuperclassesProperties(Class klass, void (^block)(objc_property_t property)) {
+    NSMutableSet <NSString *> *calledProperties = [NSMutableSet new];
+    
+    for (Class currentKlass = klass; currentKlass; currentKlass = [currentKlass superclass]) {
+        RRClassEnumerateProperties(currentKlass, ^(objc_property_t property) {
+            NSString *name = [[NSString alloc] initWithUTF8String:property_getName(property)];
+            if ([calledProperties containsObject:name]) {
+                return;
+            }
+            
+            [calledProperties addObject:name];
+            block(property);
+        });
+    }
+}
+
 void RRClassEnumerateIvars(Class klass, void (^block)(Ivar ivar)) {
     Ivar *ivars = class_copyIvarList(klass, NULL);
     for (Ivar *cursor = ivars; ivars && *cursor; cursor++) {
