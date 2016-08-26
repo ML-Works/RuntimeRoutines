@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RuntimeRoutines"
-  s.version          = "0.2.0"
+  s.version          = "0.2.1"
   s.summary          = "A block-based way to access Objective-C runtime primitives"
 
   s.description      = <<-DESC
