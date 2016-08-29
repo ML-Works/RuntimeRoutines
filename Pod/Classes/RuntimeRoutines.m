@@ -188,6 +188,8 @@ void RRPropertyGetClassAndProtocols(objc_property_t property, void (^block)(Clas
     if (location != 0 && location != NSNotFound) {
         klass = NSClassFromString([type substringToIndex:location]);
         type = [type substringFromIndex:location];
+    } else {
+        klass = NSClassFromString(type);
     }
 
     NSMutableSet *protocols = [NSMutableSet set];
