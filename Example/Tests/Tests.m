@@ -29,25 +29,48 @@
 
 - (void)testClassesAss {
     __block NSInteger count = 0;
-    RRClassEnumerateAll(^(Class klass) {
-        XCTAssert([klass isSubclassOfClass:[NSObject class]], @"Class should be subclass of NSObject: %@", klass);
-        count++;
+    __block NSInteger metaCount = 0;
+    
+    RRClassEnumerateAllClasses(YES, ^(Class klass) {
+        BOOL isSubclass = [klass isSubclassOfClass:[NSObject class]];
+        BOOL isMetaclass = class_isMetaClass(klass);
+        XCTAssert(isSubclass || isMetaclass, @"Class should be subclass of NSObject or be metaclass: %@", klass);
+        if (isSubclass) {
+            count++;
+        }
+        if (isMetaclass) {
+            metaCount++;
+        }
     });
+    
     XCTAssert(count > 1000, @"Number of classes: %@", @(count));
+    XCTAssert(metaCount > 1000, @"Number of metaclasses: %@", @(metaCount));
 }
 
 - (void)testClassesSome {
     __block NSInteger count = 0;
-    RRClassEnumerateSubclasses([XCTestCase class], ^(Class klass) {
-        XCTAssert([klass isSubclassOfClass:[XCTestCase class]], @"Class should be subclass of XCTestCase: %@", klass);
-        count++;
+    __block NSInteger metaCount = 0;
+    
+    RRClassEnumerateSubclasses([XCTestCase class], YES, ^(Class klass) {
+        BOOL isSubclass = [klass isSubclassOfClass:[XCTestCase class]];
+        BOOL isMetaclass = class_isMetaClass(klass);
+        XCTAssert(isSubclass || isMetaclass, @"Class should be subclass of XCTestCase or be metaclass: %@", klass);
+        if (isSubclass) {
+            count++;
+        }
+        if (isMetaclass) {
+            metaCount++;
+        }
     });
+    
     XCTAssert(count > 1, @"Number of classes: %@", @(count));
+    XCTAssert(metaCount > 1, @"Number of metaclasses: %@", @(metaCount));
+    XCTAssert(count == metaCount);
 }
 
 - (void)testPerformance {
     [self measureBlock:^{
-        RRClassEnumerateAll(^(Class klass){
+        RRClassEnumerateAllClasses(YES, ^(Class klass){
             ;
         });
     }];
