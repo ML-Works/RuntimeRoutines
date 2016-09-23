@@ -19,11 +19,11 @@
 
 #import "RuntimeRoutines.h"
 
-void RRClassEnumerateAll(void (^block)(Class klass)) {
-    RRClassEnumerateSubclasses([NSObject class], block);
+void RRClassEnumerateAllClasses(BOOL includeMetaClasses, void (^block)(Class klass)) {
+    RRClassEnumerateSubclasses([NSObject class], includeMetaClasses, block);
 }
 
-void RRClassEnumerateSubclasses(Class parentclass, void (^block)(Class klass)) {
+void RRClassEnumerateSubclasses(Class parentclass, BOOL includeMetaClasses, void (^block)(Class klass)) {
     Class *classes = objc_copyClassList(NULL);
     for (Class *cursor = classes; classes && *cursor; cursor++) {
         // Filter only NSObject subclasses
@@ -36,6 +36,9 @@ void RRClassEnumerateSubclasses(Class parentclass, void (^block)(Class klass)) {
         }
 
         block(*cursor);
+        if (includeMetaClasses) {
+            block(objc_getMetaClass(class_getName(*cursor)));
+        }
     }
 
     free(classes);
@@ -108,6 +111,10 @@ void RRClassEnumerateProtocolsWithSuperprotocols(Class klass, void (^block)(Prot
 
 objc_property_t RRClassGetPropertyByName(Class klass, NSString *propertyName) {
     return class_getProperty(klass, propertyName.UTF8String);
+}
+
+objc_property_t RRClassGetMetaPropertyByName(Class klass, NSString *propertyName) {
+    return class_getProperty(objc_getMetaClass(class_getName(klass)), propertyName.UTF8String);
 }
 
 void RRProtocolEnumerateSuperprotocols(Protocol *protocol, void (^block)(Protocol *superprotocol)) {
