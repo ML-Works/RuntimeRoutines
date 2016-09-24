@@ -35,16 +35,16 @@
         BOOL isSubclass = [klass isSubclassOfClass:[NSObject class]];
         BOOL isMetaclass = class_isMetaClass(klass);
         XCTAssert(isSubclass || isMetaclass, @"Class should be subclass of NSObject or be metaclass: %@", klass);
-        if (isSubclass) {
-            count++;
-        }
         if (isMetaclass) {
             metaCount++;
+        } else if (isSubclass) {
+            count++;
         }
     });
     
     XCTAssert(count > 1000, @"Number of classes: %@", @(count));
     XCTAssert(metaCount > 1000, @"Number of metaclasses: %@", @(metaCount));
+    XCTAssert(count == metaCount);
 }
 
 - (void)testClassesSome {
@@ -55,11 +55,10 @@
         BOOL isSubclass = [klass isSubclassOfClass:[XCTestCase class]];
         BOOL isMetaclass = class_isMetaClass(klass);
         XCTAssert(isSubclass || isMetaclass, @"Class should be subclass of XCTestCase or be metaclass: %@", klass);
-        if (isSubclass) {
-            count++;
-        }
         if (isMetaclass) {
             metaCount++;
+        } else if (isSubclass) {
+            count++;
         }
     });
     
