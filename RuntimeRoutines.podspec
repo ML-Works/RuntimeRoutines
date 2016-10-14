@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RuntimeRoutines"
-  s.version          = "0.3.1"
+  s.version          = "0.3.2"
   s.summary          = "A block-based way to access Objective-C runtime primitives"
 
   s.description      = <<-DESC
@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/k06a'
 
   s.ios.deployment_target = '7.0'
+  s.osx.deployment_target = '10.6'
   s.watchos.deployment_target = '1.0'
   s.tvos.deployment_target = '9.0'
 
