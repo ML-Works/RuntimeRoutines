@@ -1,6 +1,6 @@
 {
   "name": "RuntimeRoutines",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "summary": "A block-based way to access Objective-C runtime primitives",
   "description": "RuntimeRoutines allows you to access classes, protocols,\nproperties, methods, attrbutes and many other with block-based syntax.",
   "homepage": "https://github.com/ML-Works/RuntimeRoutines",
@@ -10,11 +10,12 @@
   },
   "source": {
     "git": "https://github.com/ML-Works/RuntimeRoutines.git",
-    "tag": "0.3.1"
+    "tag": "0.3.2"
   },
   "social_media_url": "https://twitter.com/k06a",
   "platforms": {
     "ios": "7.0",
+    "osx": "10.6",
     "watchos": "1.0",
     "tvos": "9.0"
   },
