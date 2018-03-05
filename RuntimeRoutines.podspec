@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RuntimeRoutines"
-  s.version          = "0.3.2"
+  s.version          = "0.3.3"
   s.summary          = "A block-based way to access Objective-C runtime primitives"
 
   s.description      = <<-DESC
@@ -10,13 +10,13 @@ Pod::Spec.new do |s|
 
   s.homepage         = "https://github.com/ML-Works/RuntimeRoutines"
   s.license          = 'MIT'
-  s.author           = { "Anton Bukov" => "k06a@mlworks.com" }
+  s.author           = { "Anton Bukov" => "k06aaa@gmail.com" }
   s.source           = { :git => "https://github.com/ML-Works/RuntimeRoutines.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/k06a'
 
   s.ios.deployment_target = '7.0'
-  s.osx.deployment_target = '10.6'
-  s.watchos.deployment_target = '1.0'
+  s.osx.deployment_target = '10.8'
+  s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
 
   s.source_files = 'Pod/Classes/**/*'
